@@ -25,6 +25,9 @@ public class Entry {
     @Column(nullable = false)
     private LocalDateTime checkOut;
 
+    @ManyToOne
+    private Dentist dentist;
+
     public Long getId() {
         return id;
     }
