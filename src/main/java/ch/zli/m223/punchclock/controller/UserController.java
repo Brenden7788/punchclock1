@@ -36,6 +36,20 @@ public class UserController {
         this.applicationUserService = applicationUserService;
     }
 
+
+
+    /**
+     * Gets all User.
+     *
+     * @return all User
+     */
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<User> getAllUser() {
+        return applicationUserService.findAll();
+    }
+
+
     /**
      * Gets all User.
      *
