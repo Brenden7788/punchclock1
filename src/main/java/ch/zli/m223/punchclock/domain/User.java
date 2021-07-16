@@ -15,8 +15,7 @@ public class User {
     @ManyToOne
     private Role role;
 
-    @ManyToOne
-    private Ability ability;
+
 
     public long getId() {
         return id;
