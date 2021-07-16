@@ -26,7 +26,7 @@ public class Entry {
     private LocalDateTime checkOut;
 
     @ManyToOne
-    private Dentist dentist;
+    private User user;
 
     public Long getId() {
         return id;

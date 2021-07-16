@@ -15,6 +15,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import static ch.zli.m223.punchclock.config.SecurityConstants.LOGIN_URL;
 import static ch.zli.m223.punchclock.config.SecurityConstants.SIGN_UP_URL;
 
 @EnableWebSecurity
@@ -31,7 +32,14 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests()
                 .antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
+                .antMatchers(HttpMethod.GET, "*.css").permitAll()
+                .antMatchers(HttpMethod.GET, "*.html").permitAll()
+                .antMatchers(HttpMethod.GET, "*.js").permitAll()
                 .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login.html").permitAll()
+                .loginProcessingUrl(LOGIN_URL)
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
                 .addFilter(new JWTAuthorizationFilter(authenticationManager()))
@@ -42,6 +50,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
+
     }
 
     @Bean

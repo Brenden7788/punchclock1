@@ -12,7 +12,6 @@ public class Role {
     private long id;
 
     @OneToMany
-    @JoinColumn(name="user_id", nullable = false)
     private List<User> user;
 
     private String name;

@@ -15,8 +15,7 @@ public class Ability {
     private String name;
 
     @OneToMany
-    @JoinColumn(name = "dentist_id",nullable = false)
-    private List<Dentist> dentists;
+    private List<User> users;
 
     public long getId() {
         return id;
@@ -34,11 +33,12 @@ public class Ability {
         this.name = name;
     }
 
-    public List<Dentist> getDentists() {
-        return dentists;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setDentists(List<Dentist> dentists) {
-        this.dentists = dentists;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
+
 }

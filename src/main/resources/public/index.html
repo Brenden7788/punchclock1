@@ -8,10 +8,30 @@
         <title>Punchclock Client</title>
         <link rel="stylesheet" type="text/css" href="style.css" />
         <script src="script.js" type="application/javascript"></script>
+        <script src="user.js" type="application/javascript"></script>
+
+        <style>
+            @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+            .entries{
+                width: 360px;
+                padding: 8% 0 0;
+                margin: auto;
+            }
+
+            .some{
+                width: 360px;
+                padding: 8% 0 0;
+                margin: auto;
+            }
+
+
+
+        </style>
     </head>
     <body>
 
-
+    <div class="entries">
         <form id="createEntryForm">
             <label for="checkIn">Check in</label>
             <input type="date" name="checkInDate" id="checkIn" required>
@@ -35,5 +55,9 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+    <div class="some">
+        <a href="createUsers.html"><input type="submit" value="create"> </a>
+    </div>
     </body>
 </html>

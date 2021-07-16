@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+              <meta charset="UTF-8">
+              <meta name="viewport"
+                    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+              <meta http-equiv="X-UA-Compatible" content="ie=edge">
+              <title>Punchclock Client</title>
+              <link rel="stylesheet" type="text/css" href="style.css" />
+              <script src="script.js" type="application/javascript"></script>
+              <script src="user.js" type="application/javascript"></script>
+              <style>
+                    .createUser {
+                    width: 360px;
+                    padding: 8% 0 0;
+                    margin: auto;
+                    }
+
+              </style>
+</head>
+<body>
+        <div class="createUser">
+          <form id="createUserForm">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" required>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required>
+            <label for="roleDropdown">Role</label>
+              <br>
+            <select id="roleDropdown">
+              <option value="1">User</option>
+              <option value="2">Admin</option>
+              <option value="2">dentist</option>
+            </select>
+              <br><br>
+            <label for="ability">Ability</label>
+            <input type="text" name="ability" id="ability" required>
+            <input type="submit" value="Save" />
+              <a href="index.html"><input type="submit" value="back"> </a>
+          </form>
+        </div>
+</body>
+</html>
