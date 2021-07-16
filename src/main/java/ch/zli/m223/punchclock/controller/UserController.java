@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * The Class Usercontroller.
@@ -29,10 +30,25 @@ public class UserController {
      * @param bCryptPasswordEncoder     the b crypt password encoder
      */
     public UserController(ApplicationUserRepository applicationUserRepository,
-                          BCryptPasswordEncoder bCryptPasswordEncoder) {
+                          BCryptPasswordEncoder bCryptPasswordEncoder, ApplicationUserService applicationUserService) {
         this.applicationUserRepository = applicationUserRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.applicationUserService = applicationUserService;
     }
+
+
+
+    /**
+     * Gets all User.
+     *
+     * @return all User
+     */
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<User> getAllUser() {
+        return applicationUserService.findAll();
+    }
+
 
     /**
      * Create user.
