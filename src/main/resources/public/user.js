@@ -1,13 +1,12 @@
 const URL = 'http://localhost:8081';
-let users = [];
 
-const loginUser = (appUser) => {
+const loginUser = (user) => {
     fetch(`${URL}/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(appUser)
+        body: JSON.stringify(user)
     }).then((result) => {
         window.localStorage.setItem('auth',result.headers.get("Authorization"));
     });

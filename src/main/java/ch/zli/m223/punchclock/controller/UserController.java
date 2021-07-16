@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+
 /**
  * The Class Usercontroller.
  */
@@ -34,19 +35,6 @@ public class UserController {
         this.applicationUserRepository = applicationUserRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.applicationUserService = applicationUserService;
-    }
-
-
-
-    /**
-     * Gets all User.
-     *
-     * @return all User
-     */
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<User> getAllUser() {
-        return applicationUserService.findAll();
     }
 
 
