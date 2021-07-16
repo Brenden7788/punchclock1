@@ -12,10 +12,18 @@ import java.util.List;
 
 import static java.util.Collections.emptyList;
 
+/**
+ * The type Application user service.
+ */
 @Service
 public class ApplicationUserService implements UserDetailsService {
     private ApplicationUserRepository applicationUserRepository;
 
+    /**
+     * Instantiates a new Application user service.
+     *
+     * @param applicationUserRepository the application user repository
+     */
     public ApplicationUserService(ApplicationUserRepository applicationUserRepository) {
         this.applicationUserRepository = applicationUserRepository;
     }
@@ -29,16 +37,39 @@ public class ApplicationUserService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(user.getName(), user.getPassword(), emptyList());
     }
 
+    /**
+     * Find all list.
+     *
+     * @return the list
+     */
     public List<User> findAll() {
         return applicationUserRepository.findAll();
     }
 
+    /**
+     * Create  user.
+     *
+     * @param user the user
+     * @return the user
+     */
     public User createUser(User user) {
         return applicationUserRepository.saveAndFlush(user);
     }
 
+    /**
+     * Delete user.
+     *
+     * @param id the id
+     */
     public void deleteUser(long id) { applicationUserRepository.deleteById(id); }
 
+    /**
+     * Update  user.
+     * Changes User
+     *
+     * @param user the user
+     * @return the user
+     */
     public User updateUser(User user) {
         return applicationUserRepository.save(user);
     }

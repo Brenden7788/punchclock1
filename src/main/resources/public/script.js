@@ -1,5 +1,6 @@
 const URL = 'http://localhost:8081';
 let entries = [];
+let dentist = [];
 
 const dateAndTimeToDate = (dateString, timeString) => {
     return new Date(`${dateString}T${timeString}`).toISOString();
@@ -52,7 +53,7 @@ const renderEntries = () => {
         row.appendChild(createCell(entry.id));
         row.appendChild(createCell(new Date(entry.checkIn).toLocaleString()));
         row.appendChild(createCell(new Date(entry.checkOut).toLocaleString()));
-        row.appendChild(createCell(users.username));
+        row.appendChild(createCell(dentist.username));
         display.appendChild(row);
     });
 };

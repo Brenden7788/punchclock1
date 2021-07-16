@@ -36,8 +36,6 @@ public class UserController {
         this.applicationUserService = applicationUserService;
     }
 
-
-
     /**
      * Gets all User.
      *

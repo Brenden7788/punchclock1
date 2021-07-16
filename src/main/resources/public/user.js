@@ -1,55 +1,19 @@
 const URL = 'http://localhost:8081';
 let users = [];
 
-const indexUsers = () => {
-    fetch(`${URL}/users`, {
-        method: 'GET'
-    }).then((result) => {
-        result.json().then((result) => {
-            users = result;
-            renderUsers();
-        });
-    });
-    renderUsers();
-};
-
-const renderUsers = () => {
-    const display = document.querySelector('#entryDisplay');
-    display.innerHTML = '';
-    users.forEach((user) => {
-        const row = document.createElement('tr');
-        row.appendChild(createCell(user.id));
-        row.appendChild(createCell(user.username));
-        row.appendChild(createCell(user.ability));
-        display.appendChild(row);
-    });
-};
-
-const createCell = (text) => {
-    const cell = document.createElement('td');
-    cell.innerText = text;
-    return cell;
-};
-
-const createUser = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const user = {};
-    user['username'] = formData.get('username');
-    user['password'] = formData.get('password');
-    user['role'] = formData.get('role');
-    user['ability'] = formData.get('ability');
-
-    fetch(`${URL}/users`, {
+const loginUser = (appUser) => {
+    fetch(`${URL}/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(user)
+        body: JSON.stringify(appUser)
     }).then((result) => {
-        result.json().then((user) => {
-            entries.push(user);
-            renderUsers();
-        });
+        window.localStorage.setItem('auth',result.headers.get("Authorization"));
     });
 };
+
+document.addEventListener('click', function(){
+    const createLoginForm = document.querySelector('#loginform');
+    createLoginForm.addEventListener('submit', loginUser);
+});
